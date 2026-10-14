@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Himanshu Kushwaha (Maltoz xd) | Gamer, Developer & Creator</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#08080c',
+                        darkcard: '#10121a',
+                        cyberBorder: '#1e2333',
+                        neonPrimary: 'var(--primary-color)',
+                        neonSecondary: 'var(--secondary-color)',
+                        neonAccent: 'var(--accent-color)'
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif'],
+                        fira: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #00f0ff;
+            --secondary-color: #bd00ff;
+            --accent-color: #00ff66;
+            --primary-glow: rgba(0, 240, 255, 0.5);
+            --secondary-glow: rgba(189, 0, 255, 0.5);
+            --accent-glow: rgba(0, 255, 102, 0.5);
+        }
+
+        body.theme-cyber {
+            --primary-color: #00f0ff;
+            --secondary-color: #bd00ff;
+            --accent-color: #00ff66;
+            --primary-glow: rgba(0, 240, 255, 0.5);
+            --secondary-glow: rgba(189, 0, 255, 0.5);
+            --accent-glow: rgba(0, 255, 102, 0.5);
+        }
+
+        body.theme-matrix {
+            --primary-color: #00ff66;
+            --secondary-color: #00b33c;
+            --accent-color: #00f0ff;
+            --primary-glow: rgba(0, 255, 102, 0.6);
+            --secondary-glow: rgba(0, 179, 60, 0.6);
+            --accent-glow: rgba(0, 240, 255, 0.6);
+        }
+
+        body.theme-crimson {
+            --primary-color: #ff0055;
+            --secondary-color: #ff5500;
+            --accent-color: #ffcc00;
+            --primary-glow: rgba(255, 0, 85, 0.6);
+            --secondary-glow: rgba(255, 85, 0, 0.6);
+            --accent-glow: rgba(255, 204, 0, 0.6);
+        }
+
+        body.theme-gold {
+            --primary-color: #ffcc00;
+            --secondary-color: #9d00ff;
+            --accent-color: #00f0ff;
+            --primary-glow: rgba(255, 204, 0, 0.6);
+            --secondary-glow: rgba(157, 0, 255, 0.6);
+            --accent-glow: rgba(0, 240, 255, 0.6);
+        }
+
+        body {
+            background-color: #08080c;
+            color: #e2e8f0;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        .glow-primary {
+            box-shadow: 0 0 15px var(--primary-glow), inset 0 0 15px var(--primary-glow);
+            border: 1px solid var(--primary-color);
+        }
+
+        .glow-secondary {
+            box-shadow: 0 0 15px var(--secondary-glow), inset 0 0 15px var(--secondary-glow);
+            border: 1px solid var(--secondary-color);
+        }
+
+        .glow-accent {
+            box-shadow: 0 0 15px var(--accent-glow), inset 0 0 15px var(--accent-glow);
+            border: 1px solid var(--accent-color);
+        }
+
+        .text-glow-primary {
+            text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+        }
+
+        .text-glow-secondary {
+            text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+        }
+
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        @media (min-width: 1024px) {
+            #crosshair-cursor {
+                pointer-events: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9999;
+                transform: translate(-50%, -50%);
+                transition: width 0.15s ease, height 0.15s ease, border-color 0.15s ease;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #08080c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+    </style>
+</head>
+<body class="theme-cyber cyber-grid min-h-screen relative selection:bg-neonPrimary selection:text-black">
+
+    <!-- Custom Gaming Crosshair Cursor -->
+    <div id="crosshair-cursor" class="hidden lg:block w-8 h-8 rounded-full border border-neonPrimary shadow-[0_0_10px_var(--primary-color)] flex items-center justify-center">
+        <div class="w-1.5 h-1.5 rounded-full bg-neonPrimary"></div>
+    </div>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></canvas>
+
+    <!-- NAVIGATION HEADER -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-obsidian/90 backdrop-blur-md border-b border-cyberBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+            
+            <!-- Logo with Himanshu Kushwaha / Maltoz xd -->
+            <a href="#" class="font-orbitron font-black text-lg sm:text-2xl tracking-wider text-white flex items-center gap-1.5">
+                <span class="text-[var(--primary-color)]">&lt;</span>
+                <span class="text-glow-primary text-[var(--primary-color)]">HIMANSHU</span>
+                <span class="text-[var(--secondary-color)]">KUSHWAHA</span>
+                <span class="text-xs font-fira text-gray-400 hidden sm:inline-block ml-1">(Maltoz xd)</span>
+                <span class="text-[var(--primary-color)]">&nbsp;/&gt;</span>
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex items-center gap-6 font-fira text-xs uppercase tracking-widest">
+                <a href="#hero" class="hover:text-[var(--primary-color)] transition-all">01. Home</a>
+                <a href="#youtube" class="hover:text-[var(--primary-color)] transition-all">02. NØVYX YT</a>
+                <a href="#discord" class="hover:text-[var(--primary-color)] transition-all">03. Discord</a>
+                <a href="#terminal" class="hover:text-[var(--primary-color)] transition-all">04. Terminal</a>
+                <a href="#projects" class="hover:text-[var(--primary-color)] transition-all">05. Projects</a>
+                <a href="#docker" class="text-[var(--accent-color)] hover:brightness-125 font-bold">06. Docker Hub</a>
+            </div>
+
+            <!-- Header Action Controls -->
+            <div class="flex items-center gap-3">
+                <!-- RGB Theme Customizer -->
+                <div class="relative group">
+                    <button class="p-2.5 rounded-lg bg-darkcard border border-cyberBorder text-white hover:border-[var(--primary-color)] transition-all">
+                        <i class="fas fa-palette text-sm text-[var(--primary-color)]"></i>
+                    </button>
+
+                    <div class="absolute right-0 mt-2 w-48 bg-darkcard border border-cyberBorder rounded-xl p-2 hidden group-hover:block shadow-2xl z-50 font-fira text-xs">
+                        <div class="px-2 py-1 text-gray-400 border-b border-gray-800 mb-1">RGB PALETTES</div>
+                        <button onclick="setTheme('theme-cyber')" class="w-full text-left px-3 py-1.5 rounded hover:bg-white/5 text-[#00f0ff] flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-[#00f0ff]"></span> Cyber Neon
+                        </button>
+                        <button onclick="setTheme('theme-matrix')" class="w-full text-left px-3 py-1.5 rounded hover:bg-white/5 text-[#00ff66] flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-[#00ff66]"></span> Matrix Green
+                        </button>
+                        <button onclick="setTheme('theme-crimson')" class="w-full text-left px-3 py-1.5 rounded hover:bg-white/5 text-[#ff0055] flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-[#ff0055]"></span> Crimson Blood
+                        </button>
+                        <button onclick="setTheme('theme-gold')" class="w-full text-left px-3 py-1.5 rounded hover:bg-white/5 text-[#ffcc00] flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-[#ffcc00]"></span> Violet Gold
+                        </button>
+                    </div>
+                </div>
+
+                <a href="https://discord.gg/E6yhQ5HRX" target="_blank" class="hidden sm:inline-flex px-4 py-2 text-xs font-fira font-bold uppercase rounded border border-[#5865F2] text-[#5865F2] hover:bg-[#5865F2]/20 transition-all shadow-[0_0_10px_rgba(88,101,242,0.4)]">
+                    <i class="fab fa-discord mr-1.5"></i> Discord
+                </a>
+
+                <button id="mobile-menu-toggle" class="lg:hidden p-2.5 rounded-lg bg-darkcard border border-cyberBorder text-[var(--primary-color)] text-lg">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MOBILE SLIDE-OUT DRAWER MENU -->
+    <div id="mobile-drawer" class="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 hidden transition-all duration-300 flex flex-col justify-between p-6">
+        <div>
+            <div class="flex justify-between items-center pb-6 border-b border-cyberBorder">
+                <span class="font-orbitron font-bold text-lg text-[var(--primary-color)]">HIMANSHU KUSHWAHA</span>
+                <button id="drawer-close" class="p-2 text-2xl text-gray-400 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="flex flex-col gap-5 pt-8 font-orbitron text-base tracking-wider">
+                <a href="#hero" class="mobile-link text-white hover:text-[var(--primary-color)]"><i class="fas fa-home text-[var(--primary-color)] w-8"></i> Home</a>
+                <a href="#youtube" class="mobile-link text-white hover:text-[var(--primary-color)]"><i class="fab fa-youtube text-red-500 w-8"></i> NØVYX Channel</a>
+                <a href="#discord" class="mobile-link text-white hover:text-[var(--primary-color)]"><i class="fab fa-discord text-[#5865F2] w-8"></i> Discord Community</a>
+                <a href="#terminal" class="mobile-link text-white hover:text-[var(--primary-color)]"><i class="fas fa-terminal text-[var(--accent-color)] w-8"></i> Cyber Terminal</a>
+                <a href="#projects" class="mobile-link text-white hover:text-[var(--primary-color)]"><i class="fas fa-code text-[var(--primary-color)] w-8"></i> Projects</a>
+                <a href="#docker" class="mobile-link text-[var(--accent-color)] font-bold"><i class="fab fa-docker w-8"></i> Docker Setup</a>
+            </div>
+        </div>
+
+        <div class="pt-6 border-t border-cyberBorder text-center font-fira text-xs text-gray-500">
+            Himanshu Kushwaha (Maltoz xd) • Gamer + Developer
+        </div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="min-h-screen pt-28 sm:pt-36 pb-16 flex items-center justify-center relative px-4 sm:px-6">
+        <div class="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8">
+            
+            <!-- Live Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--secondary-color)]/10 border border-[var(--secondary-color)]/40 text-[var(--secondary-color)] font-fira text-xs uppercase tracking-widest glow-secondary">
+                <span class="w-2.5 h-2.5 rounded-full bg-[var(--accent-color)] animate-ping"></span> Himanshu Kushwaha // Maltoz xd
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="font-orbitron text-3xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-tight">
+                HIMANSHU KUSHWAHA <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary-color)] via-[var(--secondary-color)] to-[var(--accent-color)]">
+                    GAMER + DEVELOPER
+                </span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-gray-400 font-rajdhani text-lg sm:text-2xl leading-relaxed">
+                Known online as <span class="text-[var(--primary-color)] font-bold">Maltoz xd</span> (or MaltozXD). Building web applications, hosting community servers, and creating content for the <span class="text-red-400 font-bold">NØVYX</span> YouTube channel.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 pt-2 font-fira text-sm">
+                <a href="https://github.com/MaltozXD" target="_blank" class="w-full sm:w-auto px-6 py-3.5 bg-[var(--primary-color)] text-black font-bold rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_var(--primary-glow)]">
+                    <i class="fab fa-github text-lg"></i> GitHub (MaltozXD)
+                </a>
+                <a href="https://discord.gg/E6yhQ5HRX" target="_blank" class="w-full sm:w-auto px-6 py-3.5 bg-[#5865F2] text-white font-bold rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(88,101,242,0.5)]">
+                    <i class="fab fa-discord text-lg"></i> Join Discord
+                </a>
+                <a href="#youtube" class="w-full sm:w-auto px-6 py-3.5 bg-darkcard text-red-500 border border-red-500/50 font-bold rounded-lg hover:bg-red-500/10 transition-all flex items-center justify-center gap-2">
+                    <i class="fab fa-youtube text-lg"></i> NØVYX Channel
+                </a>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-8 sm:pt-12 max-w-4xl mx-auto font-fira">
+                <div class="bg-darkcard/80 p-4 rounded-xl border border-cyberBorder hover:border-[var(--primary-color)] transition-all">
+                    <div class="font-orbitron text-2xl sm:text-3xl font-bold text-[var(--primary-color)]">Maltoz xd</div>
+                    <div class="text-xs text-gray-400 mt-1 uppercase">Gamer Alias</div>
+                </div>
+                <div class="bg-darkcard/80 p-4 rounded-xl border border-cyberBorder hover:border-[var(--secondary-color)] transition-all">
+                    <div class="font-orbitron text-2xl sm:text-3xl font-bold text-[var(--secondary-color)]">NØVYX</div>
+                    <div class="text-xs text-gray-400 mt-1 uppercase">YouTube Channel</div>
+                </div>
+                <div class="bg-darkcard/80 p-4 rounded-xl border border-cyberBorder hover:border-[var(--accent-color)] transition-all">
+                    <div class="font-orbitron text-2xl sm:text-3xl font-bold text-[var(--accent-color)]">Docker</div>
+                    <div class="text-xs text-gray-400 mt-1 uppercase">Deployment Ready</div>
+                </div>
+                <div class="bg-darkcard/80 p-4 rounded-xl border border-cyberBorder hover:border-[var(--primary-color)] transition-all">
+                    <div class="font-orbitron text-2xl sm:text-3xl font-bold text-white">24/7</div>
+                    <div class="text-xs text-gray-400 mt-1 uppercase">Discord Server</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 02: YOUTUBE CHANNEL SHOWCASE (STRICTLY NØVYX) -->
+    <section id="youtube" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+        <div class="flex items-center gap-4 mb-8 sm:mb-12">
+            <h2 class="font-orbitron text-2xl sm:text-3xl font-bold text-red-500 text-glow-secondary flex items-center gap-3">
+                <i class="fab fa-youtube"></i> 02. // YOUTUBE CHANNEL: NØVYX
+            </h2>
+            <div class="h-[1px] bg-cyberBorder flex-1"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+            <!-- Video Preview Container -->
+            <div class="lg:col-span-7 rounded-2xl overflow-hidden border border-red-500/40 bg-darkcard shadow-[0_0_25px_rgba(239,68,68,0.2)] relative group p-1">
+                <div class="aspect-video bg-obsidian rounded-xl flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-red-900/20 via-transparent to-purple-900/20"></div>
+                    
+                    <i class="fab fa-youtube text-7xl text-red-500 mb-4 group-hover:scale-110 transition-transform relative z-10"></i>
+                    
+                    <h3 class="font-orbitron text-2xl font-black text-white relative z-10">NØVYX</h3>
+                    <p class="text-sm font-fira text-gray-400 mt-2 max-w-md relative z-10">
+                        Official YouTube Channel for Gaming Videos, Minecraft SMPs, Story Mode Streams & Tech Highlights by Himanshu Kushwaha.
+                    </p>
+
+                    <a href="https://www.youtube.com/@N%C3%98VYX.playzz" target="_blank" class="mt-6 px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-fira font-bold text-xs uppercase rounded-lg transition-all flex items-center gap-2 relative z-10 shadow-lg">
+                        Subscribe to NØVYX <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- YouTube Channel Info Card -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="bg-darkcard p-6 rounded-2xl border border-cyberBorder space-y-4">
+                    <div class="flex justify-between items-center border-b border-cyberBorder pb-3">
+                        <span class="font-orbitron text-lg font-bold text-white">NØVYX Channel Info</span>
+                        <span class="px-2.5 py-1 rounded bg-red-500/10 text-red-400 text-xs font-fira border border-red-500/30">CREATOR HUB</span>
+                    </div>
+
+                    <div class="space-y-3 font-fira text-sm">
+                        <div class="flex justify-between py-1.5 border-b border-gray-800">
+                            <span class="text-gray-400">Creator Name:</span>
+                            <span class="text-white font-bold">Himanshu Kushwaha</span>
+                        </div>
+                        <div class="flex justify-between py-1.5 border-b border-gray-800">
+                            <span class="text-gray-400">In-Game Tag:</span>
+                            <span class="text-[var(--primary-color)] font-bold">Maltoz xd</span>
+                        </div>
+                        <div class="flex justify-between py-1.5">
+                            <span class="text-gray-400">Content Type:</span>
+                            <span class="text-[var(--accent-color)] font-bold">Gaming & Dev</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-darkcard p-6 rounded-2xl border border-cyberBorder space-y-3">
+                    <div class="font-orbitron text-sm font-bold text-white">Stream & Content Focus</div>
+                    <ul class="font-rajdhani text-gray-300 space-y-2 text-base">
+                        <li class="flex items-center gap-2"><i class="fas fa-play text-red-500 text-xs"></i> Minecraft SMP Survival & Builds</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-play text-red-500 text-xs"></i> Competitive Multiplayer Gaming</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-play text-red-500 text-xs"></i> Web Development & Docker Setups</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 03: DISCORD COMMUNITY -->
+    <section id="discord" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+        <div class="flex items-center gap-4 mb-8 sm:mb-12">
+            <h2 class="font-orbitron text-2xl sm:text-3xl font-bold text-[#5865F2] text-glow-primary flex items-center gap-3">
+                <i class="fab fa-discord"></i> 03. // MALTOZ XD DISCORD SERVER
+            </h2>
+            <div class="h-[1px] bg-cyberBorder flex-1"></div>
+        </div>
+
+        <div class="bg-gradient-to-r from-darkcard via-obsidian to-darkcard p-8 sm:p-12 rounded-2xl border border-[#5865F2]/50 shadow-[0_0_30px_rgba(88,101,242,0.2)] text-center space-y-6">
+            <div class="w-16 h-16 rounded-2xl bg-[#5865F2]/20 border border-[#5865F2] text-[#5865F2] text-3xl flex items-center justify-center mx-auto">
+                <i class="fab fa-discord"></i>
+            </div>
+
+            <h3 class="font-orbitron text-2xl sm:text-3xl font-bold text-white">Join Maltoz xd's Discord Server</h3>
+            <p class="text-gray-300 max-w-xl mx-auto text-base">
+                Connect with Himanshu Kushwaha and the entire Maltoz xd community for live gaming chats, video updates, server announcements, and tech support!
+            </p>
+
+            <div class="pt-2">
+                <a href="https://discord.gg/E6yhQ5HRX" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-[#5865F2] hover:bg-[#4752C4] text-white font-fira font-bold text-sm uppercase rounded-xl transition-all shadow-[0_0_20px_rgba(88,101,242,0.6)]">
+                    <i class="fab fa-discord text-xl"></i> Open Discord Direct Link (https://discord.gg/E6yhQ5HRX)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04: CYBER TERMINAL CLI -->
+    <section id="terminal" class="py-16 sm:py-24 px-4 sm:px-6 max-w-5xl mx-auto">
+        <div class="flex items-center gap-4 mb-8 sm:mb-12">
+            <h2 class="font-orbitron text-2xl sm:text-3xl font-bold text-[var(--accent-color)] text-glow-accent">
+                04. // CYBER TERMINAL CLI
+            </h2>
+            <div class="h-[1px] bg-cyberBorder flex-1"></div>
+        </div>
+
+        <div class="bg-obsidian rounded-2xl border border-[var(--accent-color)]/50 glow-accent overflow-hidden font-fira text-xs sm:text-sm shadow-2xl">
+            <div class="bg-darkcard px-4 py-3 border-b border-cyberBorder flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    <span class="ml-2 text-gray-400 text-xs font-bold">himanshu@maltozxd-shell:~</span>
+                </div>
+                <span class="text-xs text-gray-500">Type 'help' for commands</span>
+            </div>
+
+            <div id="terminal-output" class="p-4 sm:p-6 h-64 sm:h-80 overflow-y-auto space-y-2 text-gray-300 leading-relaxed">
+                <div>Welcome to <span class="text-[var(--primary-color)] font-bold">Himanshu Kushwaha (Maltoz xd) Cyber Shell</span></div>
+                <div>Type <span class="text-[var(--accent-color)] font-bold">'help'</span> to see available system commands.</div>
+            </div>
+
+            <form id="terminal-form" onsubmit="handleTerminalSubmit(event)" class="bg-darkcard/80 p-3 border-t border-cyberBorder flex items-center gap-2">
+                <span class="text-[var(--accent-color)] font-bold pl-2">&gt;</span>
+                <input type="text" id="terminal-input" autocomplete="off" class="flex-1 bg-transparent text-white focus:outline-none font-fira text-sm" placeholder="type command here...">
+                <button type="submit" class="px-4 py-1.5 bg-[var(--accent-color)]/20 hover:bg-[var(--accent-color)]/40 text-[var(--accent-color)] rounded text-xs font-bold transition-all">
+                    EXECUTE
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- SECTION 05: FEATURED PROJECTS -->
+    <section id="projects" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+        <div class="flex items-center gap-4 mb-8 sm:mb-12">
+            <h2 class="font-orbitron text-2xl sm:text-3xl font-bold text-[var(--primary-color)] text-glow-primary">
+                05. // FEATURED PROJECTS BY MALTOZ XD
+            </h2>
+            <div class="h-[1px] bg-cyberBorder flex-1"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+            <div class="bg-darkcard rounded-2xl p-6 sm:p-8 border border-cyberBorder hover:border-[var(--primary-color)] transition-all flex flex-col justify-between space-y-4">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <div class="p-3 rounded-xl bg-[var(--primary-color)]/10 text-[var(--primary-color)] text-xl">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <a href="https://github.com/MaltozXD" target="_blank" class="text-gray-400 hover:text-[var(--primary-color)] text-xl"><i class="fab fa-github"></i></a>
+                    </div>
+                    <h3 class="font-orbitron text-xl font-bold text-white">Discord Community Integration</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Direct server join system and community management hub for Maltoz xd's official gaming and tech server.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 font-fira text-xs text-[var(--primary-color)]">
+                    <span>#DiscordBot</span> <span>#Community</span> <span>#Node.js</span>
+                </div>
+            </div>
+
+            <div class="bg-darkcard rounded-2xl p-6 sm:p-8 border border-cyberBorder hover:border-[var(--secondary-color)] transition-all flex flex-col justify-between space-y-4">
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <div class="p-3 rounded-xl bg-[var(--secondary-color)]/10 text-[var(--secondary-color)] text-xl">
+                            <i class="fab fa-docker"></i>
+                        </div>
+                        <a href="https://github.com/MaltozXD" target="_blank" class="text-gray-400 hover:text-[var(--secondary-color)] text-xl"><i class="fab fa-github"></i></a>
+                    </div>
+                    <h3 class="font-orbitron text-xl font-bold text-white">Dockerized Web Starter</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Containerized portfolio website environment engineered with NGINX, optimized static builds, and simple Docker hosting.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2 font-fira text-xs text-[var(--secondary-color)]">
+                    <span>#Docker</span> <span>#NGINX</span> <span>#Tailwind</span> <span>#DevOps</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 06: DOCKER & DEPLOYMENT HUB -->
+    <section id="docker" class="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
+        <div class="flex items-center gap-4 mb-8">
+            <h2 class="font-orbitron text-2xl sm:text-3xl font-bold text-[var(--accent-color)] text-glow-accent">
+                06. // DOCKER DEPLOYMENT SETUP
+            </h2>
+            <div class="h-[1px] bg-cyberBorder flex-1"></div>
+        </div>
+
+        <div class="bg-darkcard p-6 sm:p-8 rounded-2xl border border-[var(--accent-color)]/40 space-y-6 font-fira">
+            
+            <div class="flex flex-wrap gap-2 border-b border-cyberBorder pb-4">
+                <button onclick="switchDockerTab('dockerfile')" id="tab-dockerfile" class="px-4 py-2 rounded-lg text-xs font-bold bg-[var(--accent-color)]/20 text-[var(--accent-color)] border border-[var(--accent-color)]/50">
+                    Dockerfile
+                </button>
+                <button onclick="switchDockerTab('compose')" id="tab-compose" class="px-4 py-2 rounded-lg text-xs font-bold bg-obsidian text-gray-400 border border-cyberBorder hover:text-white">
+                    docker-compose.yml
+                </button>
+                <button onclick="switchDockerTab('nginx')" id="tab-nginx" class="px-4 py-2 rounded-lg text-xs font-bold bg-obsidian text-gray-400 border border-cyberBorder hover:text-white">
+                    nginx.conf
+                </button>
+                <button onclick="switchDockerTab('github')" id="tab-github" class="px-4 py-2 rounded-lg text-xs font-bold bg-obsidian text-gray-400 border border-cyberBorder hover:text-white">
+                    GitHub Actions
+                </button>
+            </div>
+
+            <div class="relative">
+                <button onclick="copyCurrentDockerCode()" class="absolute top-3 right-3 px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded text-xs text-white flex items-center gap-1">
+                    <i class="far fa-copy"></i> <span id="docker-copy-label">Copy Snippet</span>
+                </button>
+
+                <pre id="docker-snippet" class="bg-obsidian p-4 sm:p-6 rounded-xl text-xs sm:text-sm text-gray-200 overflow-x-auto border border-cyberBorder leading-relaxed">FROM nginx:alpine
+# Himanshu Kushwaha (Maltoz xd) Portfolio Static Build
+COPY index.html /usr/share/nginx/html/index.html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]</pre>
+            </div>
+
+            <div class="pt-4 border-t border-cyberBorder text-xs text-gray-400 space-y-2">
+                <div class="text-[var(--accent-color)] font-bold uppercase">Run Container Locally:</div>
+                <div class="bg-obsidian p-3 rounded-lg border border-cyberBorder text-gray-300 overflow-x-auto">
+                    <code>docker build -t maltozxd-portfolio . && docker run -d -p 8080:80 --name maltozxd-web maltozxd-portfolio</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-cyberBorder text-center font-fira text-xs text-gray-500">
+        <p>© Himanshu Kushwaha (Maltoz xd / MaltozXD) • Gamer + Developer + Creator</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Custom Crosshair Cursor Tracking
+        const crosshair = document.getElementById('crosshair-cursor');
+        window.addEventListener('mousemove', (e) => {
+            if(crosshair) {
+                crosshair.style.left = `${e.clientX}px`;
+                crosshair.style.top = `${e.clientY}px`;
+            }
+        });
+
+        // Theme Switcher
+        function setTheme(themeName) {
+            document.body.className = `${themeName} cyber-grid min-h-screen relative selection:bg-neonPrimary selection:text-black`;
+            localStorage.setItem('maltoz_theme', themeName);
+        }
+
+        const savedTheme = localStorage.getItem('maltoz_theme');
+        if(savedTheme) {
+            setTheme(savedTheme);
+        }
+
+        // Mobile Drawer Toggle
+        const mobileToggle = document.getElementById('mobile-menu-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileToggle.addEventListener('click', () => mobileDrawer.classList.remove('hidden'));
+        drawerClose.addEventListener('click', () => mobileDrawer.classList.add('hidden'));
+        mobileLinks.forEach(link => link.addEventListener('click', () => mobileDrawer.classList.add('hidden')));
+
+        // Terminal CLI Logic
+        const terminalOutput = document.getElementById('terminal-output');
+        const terminalInput = document.getElementById('terminal-input');
+
+        const commands = {
+            'help': 'Available commands: <span class="text-[var(--primary-color)]">help, youtube, discord, skills, projects, docker, clear</span>',
+            'youtube': 'YouTube Channel: <span class="text-red-400 font-bold">NØVYX</span> (Created by Himanshu Kushwaha / Maltoz xd)',
+            'discord': 'Discord Server Direct Link: <a href="https://discord.gg/uDhme45yR" target="_blank" class="text-[#5865F2] underline">https://discord.gg/uDhme45yR</a>',
+            'skills': 'Skills: <br>- Frontend: HTML5, CSS3, Tailwind CSS, JavaScript<br>- Gaming: Content Creation, Community Management<br>- DevOps: Docker, NGINX, Git (MaltozXD)',
+            'projects': 'Featured Projects:<br>1. NØVYX YouTube Channel Content<br>2. Dockerized NGINX Web Starter Portfolio',
+            'docker': 'Docker Command: <br><code>docker run -d -p 8080:80 --name maltozxd-web maltozxd-portfolio</code>'
+        };
+
+        function handleTerminalSubmit(e) {
+            e.preventDefault();
+            const cmd = terminalInput.value.trim().toLowerCase();
+            if(!cmd) return;
+
+            const newLine = document.createElement('div');
+            newLine.innerHTML = `<span class="text-[var(--accent-color)]">&gt; ${cmd}</span>`;
+            terminalOutput.appendChild(newLine);
+
+            if(cmd === 'clear') {
+                terminalOutput.innerHTML = '';
+            } else if(commands[cmd]) {
+                const responseLine = document.createElement('div');
+                responseLine.className = 'text-gray-300 pl-3 border-l border-[var(--accent-color)]';
+                responseLine.innerHTML = commands[cmd];
+                terminalOutput.appendChild(responseLine);
+            } else {
+                const errLine = document.createElement('div');
+                errLine.className = 'text-red-400 pl-3';
+                errLine.innerText = `Command not recognized: '${cmd}'. Type 'help' for options.`;
+                terminalOutput.appendChild(errLine);
+            }
+
+            terminalInput.value = '';
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+
+        // Docker Code Snippets
+        const dockerSnippets = {
+            'dockerfile': `FROM nginx:alpine\n# Himanshu Kushwaha (Maltoz xd) Portfolio Static Build\nCOPY index.html /usr/share/nginx/html/index.html\nEXPOSE 80\nCMD ["nginx", "-g", "daemon off;"]`,
+            'compose': `version: '3.8'\nservices:\n  portfolio:\n    build: .\n    ports:\n      - "8080:80"\n    restart: always`,
+            'nginx': `server {\n    listen 80;\n    server_name localhost;\n    location / {\n        root /usr/share/nginx/html;\n        index index.html;\n    }\n}`,
+            'github': `name: Build & Deploy Maltoz xd Portfolio\non:\n  push:\n    branches: [ main ]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n    - uses: actions/checkout@v3\n    - name: Build Docker Image\n      run: docker build -t maltozxd-portfolio .`
+        };
+
+        let currentTab = 'dockerfile';
+
+        function switchDockerTab(tabKey) {
+            currentTab = tabKey;
+            document.getElementById('docker-snippet').innerText = dockerSnippets[tabKey];
+
+            ['dockerfile', 'compose', 'nginx', 'github'].forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if(t === tabKey) {
+                    btn.className = 'px-4 py-2 rounded-lg text-xs font-bold bg-[var(--accent-color)]/20 text-[var(--accent-color)] border border-[var(--accent-color)]/50';
+                } else {
+                    btn.className = 'px-4 py-2 rounded-lg text-xs font-bold bg-obsidian text-gray-400 border border-cyberBorder hover:text-white';
+                }
+            });
+        }
+
+        function copyCurrentDockerCode() {
+            const text = dockerSnippets[currentTab];
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const label = document.getElementById('docker-copy-label');
+            label.innerText = 'Copied!';
+            setTimeout(() => { label.innerText = 'Copy Snippet'; }, 2000);
+        }
+
+        // Canvas Particles Background
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.6;
+                this.speedY = (Math.random() - 0.5) * 0.6;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                const color = getComputedStyle(document.body).getPropertyValue('--primary-color').trim() || '#00f0ff';
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 35; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        initParticles();
+        animate();
+    </script>
+</body>
+</html>
